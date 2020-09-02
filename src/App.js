@@ -1,11 +1,10 @@
-import React, {Component} from 'react'
+import React,{Component} from 'react'
+import CountContainers from './containers/count_containers'     
+export default class App extends Component{
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        App
-      </div>
-    )
-  }
-} 
+    render(){
+       return (
+          <CountContainers/> 
+       )
+   }
+}
