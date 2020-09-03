@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd';
+//引入connect连接容器组件和UI组件
+import {connect} from 'react-redux'
+import {createDemo1Action,createDemo2Action} from '../../redux/action_creators/test_action'
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logo from './imgs/logo.png'
 import './css/login.less'
 
-
-export default  class Login extends Component {
+class Login extends Component {
     
-    //用于按钮提交
+    componentDidMount(){
+        console.log(this.props)
+    }
+
+    //用于表单按钮提交
      onFinish = values => {
-         console.log(values)
         console.log('Received values of form: ', values);
+        // this.props.demo1('yeyongjie')
       };
     
 
@@ -95,3 +101,11 @@ export default  class Login extends Component {
         )
     }
 }   
+
+export default connect(
+    state => ({test:state.test}),
+    {
+        demo1:createDemo1Action,
+        demo2:createDemo2Action
+    }
+)(Login)
