@@ -1,6 +1,6 @@
 //汇总所有reducer文件
 import {combineReducers} from 'redux'
-import testReducer from './test_reducer'
+import loginReducer from './login_reducer'
 
 
 //汇总
@@ -10,5 +10,5 @@ export default combineReducers({
     对象中的key就是store中保存该状态的key
     对象中的value就是store中保存该状态的value
 */
-    test:testReducer
+    userInfo:loginReducer
 })
