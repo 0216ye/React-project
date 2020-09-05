@@ -5,7 +5,7 @@ import { Layout } from 'antd';
 //获取发送查询商品分类的请求
 import {reqCategorical} from '../../api'
 import Header from './header/header.jsx'
-import './css/admin.less'
+import LeftNac from './left_nav/left_nav'
 import Home from '../home/home'
 import Category from '../category/category'
 import Product from '../product/product'
@@ -14,6 +14,7 @@ import Role from '../role/role'
 import Bar from '../bar/bar'
 import Line from '../line/line'
 import Pie from '../pie/pie'
+import './css/admin.less'
 const {Footer, Sider, Content } = Layout;
 class Admin  extends Component{
     
@@ -33,7 +34,9 @@ class Admin  extends Component{
         //登录状态
         return (
             <Layout className = 'admin'>
-                <Sider className = 'sider'>Sider</Sider>
+                <Sider className = 'sider'>
+                    <LeftNac/>
+                </Sider>
                 <Layout>
                 <Header/>
                 <Content className = 'context'>

@@ -8,7 +8,7 @@ import {Redirect} from 'react-router-dom'
 import {reqLogin} from '../../api'
 import {createSaveUserInfoAction} from '../../redux/action_creators/login_action'
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import logo from './imgs/logo.png'
+import logo from '../../static/imgs/logo.png'
 import './css/login.less'
 
 class Login extends Component {
@@ -26,7 +26,6 @@ class Login extends Component {
             this.props.saveUserInfo(data)
             //2跳转到admin页面-->利用浏览器历史记录的history的replace方法，将路径修改为指定路径，并且replace不能回退
             this.props.history.replace('/admin')
-            console.log(data)
           
         }else {
             //参数二为：秒数
