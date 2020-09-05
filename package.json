@@ -10,6 +10,9 @@
     "antd": "^4.6.1",
     "axios": "^0.20.0",
     "craco-less": "^1.17.0",
+    "customize-cra": "^1.0.0",
+    "dayjs": "^1.8.35",
+    "jsonp": "^0.2.1",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -18,7 +21,8 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "screenfull": "^5.0.2"
   },
   "scripts": {
     "start": "craco start",

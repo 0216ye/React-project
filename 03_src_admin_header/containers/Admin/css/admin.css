@@ -1,0 +1,13 @@
+.admin {
+  height: 100%;
+}
+.admin .sider {
+  color: white;
+}
+.admin .context {
+  background-color: white;
+  margin: 30px 30px 0px 30px;
+}
+.admin .footer {
+  text-align: center;
+}

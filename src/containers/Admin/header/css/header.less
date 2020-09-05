@@ -1,0 +1,60 @@
+#header{
+    color:rgba(0, 0, 0, 0.85);
+    background-color: white;
+    .header-top{
+        line-height: 40px;
+        height: 40px;
+        border-bottom: 1px solid #1DA57A;
+        box-sizing: border-box;
+        text-align: right;
+        .username{
+            margin: 0px 0px 0px 5px;
+        }
+        .header-top-button{
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+        
+       
+   
+    }
+    .header-bottom{
+        height: 40px;
+        display: flex;
+        line-height: 40px;
+        .header-bottom-left{
+            position: relative;
+            width: 25%;
+            text-align: center;
+            //制作一个倒三角，用于定位到用户管理字体下
+            &::after{
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 40px;
+                transform: translateX(-50%);
+                border-top:20px solid white;
+                border-left:20px solid transparent;
+                border-bottom:20px solid transparent;
+                border-right:20px solid transparent;
+            }   
+        }
+        .header-bottom-right{
+            width: 75%;
+            text-align: right;
+            margin-right: 8px;
+            .time{
+                margin-right: 15px;
+            }
+            img{
+                width: 30px;
+                height: 20px;
+            }
+            pre{
+                display: inline;
+                margin-left: 15px;
+            }
+        }
+       
+    }
+}
