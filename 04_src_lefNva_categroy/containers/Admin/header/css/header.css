@@ -1,0 +1,55 @@
+#header {
+  color: rgba(0, 0, 0, 0.85);
+  background-color: white;
+}
+#header .header-top {
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid #1DA57A;
+  box-sizing: border-box;
+  text-align: right;
+}
+#header .header-top .username {
+  margin: 0px 0px 0px 5px;
+}
+#header .header-top .header-top-button {
+  margin-right: 5px;
+  border-radius: 5px;
+}
+#header .header-bottom {
+  height: 40px;
+  display: flex;
+  line-height: 40px;
+}
+#header .header-bottom .header-bottom-left {
+  position: relative;
+  width: 25%;
+  text-align: center;
+}
+#header .header-bottom .header-bottom-left::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  border-top: 20px solid white;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+#header .header-bottom .header-bottom-right {
+  width: 75%;
+  text-align: right;
+  margin-right: 8px;
+}
+#header .header-bottom .header-bottom-right .time {
+  margin-right: 15px;
+}
+#header .header-bottom .header-bottom-right img {
+  width: 30px;
+  height: 20px;
+}
+#header .header-bottom .header-bottom-right pre {
+  display: inline;
+  margin-left: 15px;
+}

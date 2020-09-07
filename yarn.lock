@@ -2128,7 +2128,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
-antd@^4.6.1:
+antd@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npm.taobao.org/antd/download/antd-4.6.2.tgz#c3a8fda7f7c60aa3d3e8ed356bef61902ed3d1ad"
   integrity sha1-w6j9p/fGCqPT6O01a+9hkC7T0a0=
