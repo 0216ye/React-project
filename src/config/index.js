@@ -6,3 +6,5 @@ export const BASE_URL = '' //发送请求的基本路径，当前在开发环境
 export const CITY = 'guangzhou'
 //配置查询天气接口的验证码
 export const WEATHER_AK = '3p49MVra6urFRGOT9s8UBWr2' 
+//配置每页显示的数量
+export const PAGE_SIZE = '5'

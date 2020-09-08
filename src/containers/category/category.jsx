@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import { Card,Button,Table,message,Modal,Form,Input} from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import {reqCategory,reqAddCategory,reqUpdateCategory} from '../../api/index'
+import {PAGE_SIZE} from '../../config/index'
 export default class Category extends Component{
   //获取Form组件的ref
   formRef = React.createRef();
@@ -176,7 +177,7 @@ export default class Category extends Component{
                 bordered //显示表格边框
                 rowKey = '_id' //设置唯一标识的key对应为获取到数据的_id标识
                 pagination = {{ //分页器
-                  pageSize:5,//设置每页显示的数量
+                  pageSize:PAGE_SIZE,//设置每页显示的数量
                   hideOnSinglePage:true,  //只有一页时隐藏分页器
                   showQuickJumper : true, //用于快速跳转到某一页
                 }}
