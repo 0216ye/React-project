@@ -12,6 +12,8 @@ import Role from '../role/role'
 import Bar from '../bar/bar'
 import Line from '../line/line'
 import Pie from '../pie/pie'
+import AddUpdat from '../product/add_update'
+import Detail from '../product/detail'
 import './css/admin.less'
 const {Footer, Sider, Content } = Layout;
 class Admin  extends Component{
@@ -36,7 +38,10 @@ class Admin  extends Component{
                     <Switch>
                         <Route path = '/admin/home' component = {Home} />
                         <Route path = '/admin/prod-about/category' component = {Category} />
-                        <Route path = '/admin/prod-about/product' component = {Product} />
+                        <Route path = '/admin/prod-about/product' component = {Product} exact /> {/**精准匹配 */}
+                        <Route path = '/admin/prod-about/product/detail/:id' component = {Detail} /> {/**\/:id -->为参数路由 */}
+                        <Route path = '/admin/prod-about/product/add_update' component = {AddUpdat} exact/>
+                        <Route path = '/admin/prod-about/product/add_update/:id' component = {AddUpdat} />
                         <Route path = '/admin/user' component = {User}/>
                         <Route path = '/admin/role' component = {Role}/>
                         <Route path = '/admin/chart/bar' component = {Bar}/>

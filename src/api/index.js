@@ -42,3 +42,30 @@ export const reqUpdateCategory = (categoryId,categoryName) =>  myAxios.post(`${B
 
 //获取商品分页列表请求
 export const reqProductList = (pageNum,pageSize) => myAxios.get(`${BASE_URL}/manage/product/list`,{params:{pageNum,pageSize}})
+
+//对商品进行上架/下架处理请求
+export const reqUpdateStatus = (productId,status) =>  myAxios.post(`${BASE_URL}/manage/product/updateStatus`,{productId,status})
+
+// 根据商品名称搜索/根据商品描述 搜索分页列表
+export const reqSearchProductList = (pageNum,pageSize,searchType,keyWord) => myAxios.get(`${BASE_URL}/manage/product/search`,{params:{pageNum,pageSize,[searchType]:keyWord}})
+    //以下为完整写法，上面的为简写:因为searchType的值为productName/productDesc,后端接收的key也是这两个其中一个 
+   /* if (searchType === 'productName'){
+        console.log('发送请求')
+      return  myAxios.get(`${BASE_URL}/manage/product/search`,{
+            params:{ //根据select选择器选中的不同，get的参数也不一样
+                pageNum,
+                pageSize,
+                productName:keyWord
+            }
+        })
+    }else{
+      return  myAxios.get(`${BASE_URL}/manage/product/search`,{
+            params:{
+                pageNum,
+                pageSize,
+                productDesc:keyWord
+            }
+        })  
+    }
+    */
+   
