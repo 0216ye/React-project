@@ -10,7 +10,7 @@ import {BASE_URL,CITY,WEATHER_AK} from '../config'
 export  const reqLogin = (username,password) => myAxios.post(`${BASE_URL}/login`, {username,password})  
 
 //商品分类查询请求
-export const reqCategorical = () => myAxios.get(`${BASE_URL}/manage/category/list`)
+export const reqCategory = () => myAxios.get(`${BASE_URL}/manage/category/list`)
 
 //百度天气接口请求
 export const reqWeather = () =>{
@@ -33,3 +33,9 @@ export const reqWeather = () =>{
         )
     })
 }
+
+//添加商品分类请求
+export const reqAddCategory = (categoryName) =>  myAxios.post(`${BASE_URL}/manage/category/add`,{categoryName:categoryName})
+
+//修改商品分类请求
+export const reqUpdateCategory = (categoryId,categoryName) =>  myAxios.post(`${BASE_URL}/manage/category/update`,{categoryId,categoryName})

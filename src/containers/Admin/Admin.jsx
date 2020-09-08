@@ -2,8 +2,6 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {Redirect,Route,Switch} from 'react-router-dom'
 import { Layout } from 'antd';
-//获取发送查询商品分类的请求
-import {reqCategorical} from '../../api'
 import Header from './header/header.jsx'
 import LeftNac from './left_nav/left_nav'
 import Home from '../home/home'
@@ -18,11 +16,6 @@ import './css/admin.less'
 const {Footer, Sider, Content } = Layout;
 class Admin  extends Component{
     
-    //查询商品分类的方法
-    demo = async ()=>{
-      let result = await  reqCategorical()
-      console.log(result)
-    }
     //在render中跳转页面，一般使用Redirect进行重定向页面
     render(){
         let {isLogin} =  this.props.userInfo

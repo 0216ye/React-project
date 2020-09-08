@@ -64,7 +64,6 @@ class LeftNva extends Component {
                     defaultOpenKeys={this.props.location.pathname.split('/').splice(2)}
                     mode="inline"
                     theme="dark"
-                    
                 >
                     {
                         //调用创建菜单的方法
