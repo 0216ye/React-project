@@ -69,3 +69,5 @@ export const reqSearchProductList = (pageNum,pageSize,searchType,keyWord) => myA
     }
     */
    
+// 根据商品ID获取商品
+export const reqProductById = (productId) => myAxios.get(`${BASE_URL}/manage/product/info`,{params:{productId}})

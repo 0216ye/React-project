@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {createSaveProductList} from '../../redux/action_creators/product_action' 
 import { Card, Button, Select, Input, Table, message } from 'antd';
 import {
     PlusCircleOutlined,
@@ -8,13 +10,14 @@ import { reqProductList, reqUpdateStatus, reqSearchProductList } from '../../api
 import { PAGE_SIZE } from '../../config/index'
 const { Option } = Select;
 //该组件中 Select和Input的值，通过了受控组件(值是否自动维护到状态中)进行了获取
-export default class Product extends Component {
+class Product extends Component {
     state = {
         productList: [], //保存商品分页的数据
         current: 1, //当前所在的页的值
         total: '',//总数量
         keyWord: '',//保存着输入框输入的内容
-        searchType: 'productName' //保存着select选择器的name
+        searchType: 'productName', //保存着select选择器的name
+        isLoading: true //是否显示加载
     }
 
     componentDidMount() {
@@ -28,8 +31,15 @@ export default class Product extends Component {
         let {keyWord,searchType} = this.state
         let result
         //判断是通过搜索按钮点击的还是通过分页器点击的!
-        if (this.isSearch)  result = await reqSearchProductList(number,PAGE_SIZE,searchType,keyWord) //根据商品名称搜索/根据商品描述 发送搜索分页列表请求
-        else   result = await reqProductList(number, pageSize) //获取商品分页列表请求
+        if (this.isSearch) {
+            //根据商品名称搜索/根据商品描述 发送搜索分页列表请求
+            result = await reqSearchProductList(number,PAGE_SIZE,searchType,keyWord) 
+            this.setState({isLoading:false})
+        }
+        else {
+           result = await reqProductList(number, pageSize) //获取商品分页列表请求
+           this.setState({isLoading:false})
+        }
         let {status,data}  = result
         if (status === 0) {
             this.setState({ 
@@ -40,6 +50,8 @@ export default class Product extends Component {
                 //设置获取到的总的数据量
                 total: data.total
             })
+            //将获取到的数据维护到redux中，供detail组件使用，减少再次发送请求从服务器获取数据
+            this.props.productList(data.list)
         } else {
             message.error('获取商品信息出错', 1)
         }
@@ -53,7 +65,6 @@ export default class Product extends Component {
         else status = 1
         //发送请求
         let result = await reqUpdateStatus(_id, status)
-        console.log(result)
         if (result.status === 0) {
             //更新商品状态请求成功
             message.success('更新商品状态成功!', 1)
@@ -80,7 +91,7 @@ export default class Product extends Component {
         this.getProductList()
     }
     render() {
-        let { total, current } = this.state
+        let { total, current,isLoading } = this.state
         //Table表格的数据源
         const dataSource = this.state.productList
         const columns = [
@@ -131,13 +142,13 @@ export default class Product extends Component {
                 title: '操作',
                 align: 'center',//居中对齐
                 width: '10%',
-                dataIndex: 'oper',
+                // dataIndex: 'oper',
                 key: 'oper',
-                render: (oper) => {
+                render: (item) => {
                     return (
                         <div>
-                            <Button type='link' onClick = {()=>{this.props.history.push('/admin/prod-about/product/detail/111')}}>详情</Button><br />
-                            <Button type='link' onClick = {()=>{this.props.history.push('/admin/prod-about/product/add_update/222')}} >修改</Button>
+                            <Button type='link' onClick = {()=>{this.props.history.push(`/admin/prod-about/product/detail/${item._id}`)}}>详情</Button><br />
+                            <Button type='link' onClick = {()=>{this.props.history.push(`/admin/prod-about/product/detail/${item._id}`)}} >修改</Button>
                         </div>
                     )
                 }
@@ -179,6 +190,7 @@ export default class Product extends Component {
                     columns={columns}
                     bordered
                     rowKey='_id' //表格行 key 的取值改为_id
+                    loading =  {isLoading}
                     pagination={{//分页器
                         total: total, // 总的数据量
                         current: current, //当前所在的页
@@ -195,3 +207,9 @@ export default class Product extends Component {
         )
     }
 }
+export default connect(
+    state => ({}),
+    {
+       productList:createSaveProductList
+    }
+)(Product)

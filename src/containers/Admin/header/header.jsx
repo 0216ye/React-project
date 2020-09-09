@@ -62,22 +62,24 @@ class Header extends Component {
     }
     //用于获取标题的方法
     getTitle = () =>{
-        console.log('------')
+        let {pathname} = this.props.location
         //获取url最后'/'后的路径，因为他和key命名一致，可以用来判断配置项中的key，匹配上则可以使用该对象中的titile
-        let pathcTitle = this.props.location.pathname.split('/').reverse()[0]
+        let pathTitle = pathname.split('/').reverse()[0]
+        //如果路径中包含了 product  则将pathTitle改为 product(匹配：商品管理)
+        if (pathname.indexOf('product') !== -1) pathTitle = 'product'
         let result  = ''
         menuList.forEach((item) =>{
             //判断是否有二级菜单，有则从二级里找title
             if (item.childrens){
                 //find:会返回匹配条件的一个对象
                 let tmp = item.childrens.find( (citem) => {
-                    return citem.key === pathcTitle
+                    return citem.key === pathTitle
                 } )
                 //返回的对象中去title
                 if (tmp) result = tmp.title
             }else{
                 //没有二级菜单
-                if (item.key === pathcTitle) result = item.title
+                if (item.key === pathTitle) result = item.title
             }
         } ) 
         //将获取到的title保存到state中
@@ -126,7 +128,7 @@ class Header extends Component {
                 <div className='header-bottom'>
                     <div className='header-bottom-left'>
                         {/**用于展示标题 : 从参数或者状态中读取，如果没有left_nav.jsx保存了title到redux，直接在下面这里调用getTitle方法，效率很低，每次render都会在次调用getTitle! */}
-                        {this.props.title || this.state.title}
+                        { this.props.title || this.state.title}
                     </div>
                     <div className='header-bottom-right'>
                         <span className='time'>{data}</span>

@@ -58,8 +58,8 @@ class LeftNva extends Component {
                 </h1>
                 </header>
                 <Menu
-                    /**根据url路径最后一个 '/ ' 后的参数，判断给哪个添加高亮(点击) */
-                    defaultSelectedKeys={this.props.location.pathname.split('/').reverse()[0]}
+                    /**根据url路径最后一个 '/ '后的参数，判断给哪个添加高亮(点击)  & 如果路径中有product字符串，则选中该菜单 */
+                    defaultSelectedKeys={ this.props.location.pathname.indexOf('product') !== -1 ? 'product' : this.props.location.pathname.split('/').reverse()[0]}
                     /*根据 '/'分割的数组 ['','admin','chart','line']前两位不需要，使用splice切割数组，让保存下来的数组的菜单处于打开的状态 */
                     defaultOpenKeys={this.props.location.pathname.split('/').splice(2)}
                     mode="inline"

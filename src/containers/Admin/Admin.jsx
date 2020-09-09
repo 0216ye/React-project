@@ -12,8 +12,8 @@ import Role from '../role/role'
 import Bar from '../bar/bar'
 import Line from '../line/line'
 import Pie from '../pie/pie'
-import AddUpdat from '../product/add_update'
-import Detail from '../product/detail'
+import AddUpdat from '../product/addUpdate/add_update'
+import Detail from '../product/detaile/detail'
 import './css/admin.less'
 const {Footer, Sider, Content } = Layout;
 class Admin  extends Component{

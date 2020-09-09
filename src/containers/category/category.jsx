@@ -1,9 +1,11 @@
 import React,{Component} from 'react'
+import {connect} from 'react-redux'
+import {createSaveCategoryList} from '../../redux/action_creators/category_action'
 import { Card,Button,Table,message,Modal,Form,Input} from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import {reqCategory,reqAddCategory,reqUpdateCategory} from '../../api/index'
 import {PAGE_SIZE} from '../../config/index'
-export default class Category extends Component{
+class Category extends Component{
   //获取Form组件的ref
   formRef = React.createRef();
   state = {
@@ -24,8 +26,12 @@ export default class Category extends Component{
     //结束Table显示加载状态
     this.setState({isLoading:false})
     const {status,data,msg} = result
-    if (status === 0 )    this.setState({category:data.reverse()})//将获取到的数据数组反转，然后维护到状态中
-    else  message.error(msg,1) //提示错误
+    if (status === 0 ) {
+      //将获取到的数据数组反转，然后维护到状态中
+      this.setState({category:data.reverse()})
+      //将获取到的商品分类保存到redux中
+      this.props.saveCateList(data)
+    } else  message.error(msg,1) //提示错误
   }  
 
   //用于展示Modal提示框 -->添加
@@ -217,3 +223,7 @@ export default class Category extends Component{
        )
    }
 }
+export default connect(
+  state => ({}),
+  {saveCateList:createSaveCategoryList}
+)(Category)

@@ -2,7 +2,8 @@
 import {combineReducers} from 'redux'
 import loginReducer from './login_reducer'
 import menuReducer from './menu_reducer'
-
+import productReducer from './product_reducer'
+import categoryReducerList from './category_reducer'
 
 //汇总
 export default combineReducers({
@@ -12,5 +13,7 @@ export default combineReducers({
     对象中的value就是store中保存该状态的value
 */
     userInfo:loginReducer,
-    title:menuReducer
+    title:menuReducer,
+    productList:productReducer,
+    categoryList : categoryReducerList
 })
