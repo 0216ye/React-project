@@ -67,6 +67,17 @@ export default class PicturesWall extends Component {
         })
         return result
     }
+    //保存图片数组信息到fileList,用于product组件点击修改按钮时，图片的回显
+    setImgArr = (imgArr) => {
+        let fileList = imgArr.map((item,index) => {
+            return {
+                uid: -index,
+                name: item,
+                url : `${BASE_URL}/upload/${item}`
+            }
+        })
+        this.setState({fileList})
+    }
     render() {
         const { previewVisible, previewImage, fileList, previewTitle } = this.state;
         const uploadButton = (

@@ -46,7 +46,7 @@ export const reqProductList = (pageNum,pageSize) => myAxios.get(`${BASE_URL}/man
 //对商品进行上架/下架处理请求
 export const reqUpdateStatus = (productId,status) =>  myAxios.post(`${BASE_URL}/manage/product/updateStatus`,{productId,status})
 
-// 根据商品名称搜索/根据商品描述 搜索分页列表
+// 根据商品名称搜索/根据商品描述 搜索分页列表的请求
 export const reqSearchProductList = (pageNum,pageSize,searchType,keyWord) => myAxios.get(`${BASE_URL}/manage/product/search`,{params:{pageNum,pageSize,[searchType]:keyWord}})
     //以下为完整写法，上面的为简写:因为searchType的值为productName/productDesc,后端接收的key也是这两个其中一个 
    /* if (searchType === 'productName'){
@@ -69,12 +69,15 @@ export const reqSearchProductList = (pageNum,pageSize,searchType,keyWord) => myA
     }
     */
    
-// 根据商品ID获取商品
+// 根据商品ID获取商品请求
 export const reqProductById = (productId) => myAxios.get(`${BASE_URL}/manage/product/info`,{params:{productId}})
 
 
-// 根据图片的name删除对应的图片
+// 根据图片的name删除对应的图片请求
 export  const reqDeleteImg = (name) => myAxios.post(`${BASE_URL}/manage/img/delete`, {name})  
 
-//添加商品的方法
+//添加商品的请求
 export  const reqAddProduct = (productObj) => myAxios.post(`${BASE_URL}/manage/product/add`, {...productObj})  
+
+//更新商品的请求
+export  const reqUpdateProductList = (productObj) => myAxios.post(`${BASE_URL}/manage/product/update`, {...productObj})  

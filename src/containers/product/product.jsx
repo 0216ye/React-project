@@ -126,7 +126,7 @@ class Product extends Component {
                     return (
                         <div>
                             <Button
-                                type={item.status === 1 ? 'danger' : 'primary'}
+                                type={item.status === 1 ? 'primary' : 'danger'}
                                 onClick={() => {
                                     this.updaProductList(item)
                                 }}
@@ -148,7 +148,7 @@ class Product extends Component {
                     return (
                         <div>
                             <Button type='link' onClick = {()=>{this.props.history.push(`/admin/prod-about/product/detail/${item._id}`)}}>详情</Button><br />
-                            <Button type='link' onClick = {()=>{this.props.history.push(`/admin/prod-about/product/detail/${item._id}`)}} >修改</Button>
+                            <Button type='link' onClick = {()=>{this.props.history.push(`/admin/prod-about/product/add_update/${item._id}`)}} >修改</Button>
                         </div>
                     )
                 }
@@ -183,7 +183,7 @@ class Product extends Component {
                         </Button>
                     </div>
                 } //选择器
-                extra={<Button type='primary' onClick ={()=>{this.props.history.push('/admin/prod-about/product/add_update/sdkjasd')}}><PlusCircleOutlined/>添加商品</Button>}
+                extra={<Button type='primary' onClick ={()=>{this.props.history.push('/admin/prod-about/product/add_update')}}><PlusCircleOutlined/>添加商品</Button>}
             >
                 <Table
                     dataSource={dataSource}
