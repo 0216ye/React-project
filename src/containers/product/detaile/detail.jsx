@@ -41,7 +41,6 @@ class Detail extends Component {
             let result = reduxCategory.find((item) => {
                 return  item._id === this.categoryId
             })  
-            console.log(this.categoryId)
             if (result)   this.setState({categoryName:result.name,isLoading:false})
             else  message.error('获取所属分类出错',1)  
         }else{

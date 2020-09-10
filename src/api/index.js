@@ -71,3 +71,10 @@ export const reqSearchProductList = (pageNum,pageSize,searchType,keyWord) => myA
    
 // 根据商品ID获取商品
 export const reqProductById = (productId) => myAxios.get(`${BASE_URL}/manage/product/info`,{params:{productId}})
+
+
+// 根据图片的name删除对应的图片
+export  const reqDeleteImg = (name) => myAxios.post(`${BASE_URL}/manage/img/delete`, {name})  
+
+//添加商品的方法
+export  const reqAddProduct = (productObj) => myAxios.post(`${BASE_URL}/manage/product/add`, {...productObj})  
