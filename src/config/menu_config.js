@@ -10,7 +10,7 @@ export default[
         key: 'prod-about',
         icon: 'AppstoreOutlined',
         title: '商品',
-        childrens:[ //子菜单-->一个对象就是一个二级菜单
+        children:[ //子菜单-->一个对象就是一个二级菜单
             {
                 key: 'category',
                 icon: 'UnorderedListOutlined',
@@ -40,8 +40,8 @@ export default[
     {
         key: 'chart',
         icon: 'AreaChartOutlined',
-        title: '图表管理',
-        childrens:[
+        title: '图表报表',
+        children:[
             {
                 key: 'bar',
                 icon: 'BarChartOutlined',

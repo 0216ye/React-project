@@ -4,6 +4,7 @@ import loginReducer from './login_reducer'
 import menuReducer from './menu_reducer'
 import productReducer from './product_reducer'
 import categoryReducerList from './category_reducer'
+import userInfoReducerList from './user_reducer'
 
 //汇总
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
     userInfo:loginReducer,
     title:menuReducer,
     productList:productReducer,
-    categoryList : categoryReducerList
+    categoryList : categoryReducerList,
+    userInfoList:userInfoReducerList
 })

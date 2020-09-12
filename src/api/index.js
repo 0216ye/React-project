@@ -81,3 +81,21 @@ export  const reqAddProduct = (productObj) => myAxios.post(`${BASE_URL}/manage/p
 
 //更新商品的请求
 export  const reqUpdateProductList = (productObj) => myAxios.post(`${BASE_URL}/manage/product/update`, {...productObj})  
+
+//获取角色列表请求
+export const reqRoleList = () => myAxios.get(`${BASE_URL}/manage/role/list`)
+
+//添加角色请求 -->下面的参数为解构实参的对象，获取到指定的roleName
+export  const reqAddRole = ({roleName}) => myAxios.post(`${BASE_URL}/manage/role/add`, {roleName})  
+
+//请求给角色授权
+export  const reqAuthRolt = (roleObj) => myAxios.post(`${BASE_URL}/manage/role/update`, {...roleObj,auth_time:Date.now()})  
+
+//获取所有用户列表(同时携带了角色列表回来)
+export const reqUserList = () => myAxios.get(`${BASE_URL}/manage/user/list`)
+
+//添加用户的请求
+export  const reqAddUser = (userObj) => myAxios.post(`${BASE_URL}/manage/user/add`, {...userObj})  
+
+//删除用户的请求
+export  const reqDeleteUser = (userId) => myAxios.post(`${BASE_URL}/manage/user/delete`, {userId})  

@@ -10,3 +10,5 @@ export const SAVE_TITLE = 'sace_title'
 export const SAVE_PRODUCT_LIST = 'save_product_list'
 //获取商品分类信息
 export const SAVE_CATEGORY_LIST = 'save_category_list'
+//保存获取到的用户信息
+export const SAVE_USERINFO_LIST = 'save_userinfo_list'

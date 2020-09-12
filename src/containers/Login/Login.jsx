@@ -45,7 +45,7 @@ class Login extends Component {
             // 2). 必须大于等于4位
             console.log('12')
             return Promise.reject('密码必须大于等于4位')
-        }else if(value.length >222) {
+        }else if(value.length >12) {
             console.log('12')
             // 3). 必须小于等于12位  
             return Promise.reject('密码必须小于等于12位')

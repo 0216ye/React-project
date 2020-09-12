@@ -151,7 +151,7 @@ class AddUpdate extends Component {
                         name="imgs"
                         
                     >
-                        <PicturesWall ref={this.pwRef} style  = {{maxWidth:'300px'}} />
+                        <PicturesWall ref={this.pwRef} />
                     </Form.Item>
                     <Form.Item label="商品详情"
                         name="detail"
