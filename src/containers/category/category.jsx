@@ -14,7 +14,7 @@ class Category extends Component{
     titleType: '', //判断是显示(添加分类还是修改分类)
     isLoading:true , //判断是否显示加载中
     modalCurrentValue:'' ,//弹窗显示的值-->用于数据的回显
-    modalCurrentId: '' //弹窗显示的值对应的ID-->用于数据的回显
+    modalCurrentId: '', //弹窗显示的值对应的ID-->用于数据的回显
   }
   componentDidMount(){
     //调用发送商品列表请求
@@ -55,12 +55,17 @@ class Category extends Component{
     // 将每条数据的唯一标识ID，和name的值保存到state中
     let {_id,name} = item
     //第一次this.formRef.current为null，当为null再使用 this.formRef.current，否则报错
-    if (this.formRef.current){
-      //动态的修改Input的值，因为initialValues 4.0已经不允许从setState 动态更新，
+    // if (this.formRef.current){
+    //   //动态的修改Input的值，因为initialValues 4.0已经不允许从setState 动态更新，
+    //   this.formRef.current.setFieldsValue({
+    //     categoryName: name,
+    //   })
+    // }
+    setTimeout(() => {
       this.formRef.current.setFieldsValue({
         categoryName: name,
       })
-    }
+    },100)
     this.setState({
       titleType: 'update',
       modalCurrentValue:name,//第一次重状态中读取
@@ -201,10 +206,7 @@ class Category extends Component{
             >
               {/**提示框内的表单 */}
                <Form  
-                  name="category_form"
-                  className="category_form"
                   ref={this.formRef}  //创建ref
-                  // initialValues={this.state.m}
                   initialValues={{
                     categoryName:this.state.modalCurrentValue,//对应的Form.Item的默认值
                   }}

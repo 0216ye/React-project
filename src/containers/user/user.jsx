@@ -14,7 +14,8 @@ class User extends Component {
         isShowAdd: false,
         userList: [], //保存着用户信息
         roleList: [], //保存着角色信息
-        titleType: 'add' //表单的操作的类型
+        titleType: 'add', //表单的操作的类型
+        visible:false //展示删除弹窗
     }
     componentDidMount() {
         this.getUserList()
@@ -97,15 +98,33 @@ class User extends Component {
     
 
     }
+      //用于点击展示创建用户的弹窗
+      showAdd = () => {
+        setTimeout(() => {
+            this.formRef.current.resetFields()
+        },100)
+        this.setState({ isShowAdd: true,titleType:'add'})
+    }
     //删除用户的方法
     deleteUser = async (id) => {
-        let result = await reqDeleteUser(id)
+        this.setState({visible:true})
+        //将传递过的id挂到this上
+        this.id = id
+    }
+    //输出用户的弹窗-->确认按钮
+    onHandleOk = async(id) => {
+        let result = await reqDeleteUser(this.id)
         let { status, data, msg } = result
         if (status === 0) {
+            this.setState({visible:false})
             message.success('删除成功!', 1)
             this.getUserList()
         }
         else message.error(msg, 1)
+    }
+    //用于删除用户的弹窗-->取消
+    onCancel = () => {
+        this.setState({visible:false})
     }
     render() {
         const dataSource = this.state.userList
@@ -162,7 +181,7 @@ class User extends Component {
             <div>
                 <Card
                     title={
-                        <Button type='primary' onClick={() => { this.setState({ isShowAdd: true }) }}  >
+                        <Button type='primary' onClick={this.showAdd}  >
                             <UserAddOutlined />
                             创建用户
                         </Button>
@@ -245,6 +264,16 @@ class User extends Component {
                                 </Select>
                             </Form.Item>
                         </Form>
+                    </Modal>
+                    {/**用删除用户的弹窗 */}
+                    <Modal
+                        okText='确定'
+                        cancelText='取消'
+                        visible = {this.state.visible}
+                        onOk = {this.onHandleOk}
+                        onCancel = {this.onCancel}
+                    >
+                        <p>确认删除该用户?</p>
                     </Modal>
                 </Card>
             </div>

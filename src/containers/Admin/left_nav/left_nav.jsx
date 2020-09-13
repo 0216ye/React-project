@@ -13,7 +13,6 @@ class LeftNva extends Component {
 
     //用于判断用户有哪些权限，能看见什么菜单
     hasAuth = (item) => {
-        console.log(item)
         let username = this.props.userName.user.username //用户名
         let menus = this.props.userName.user.role.menus//menus:["prod-about", "category", "product"]
         if (username === 'admin') return true
